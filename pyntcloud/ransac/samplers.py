@@ -1,8 +1,9 @@
 import numpy as np
 
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from ..structures import VoxelGrid
 
+ABC = ABCMeta('ABC', (object,), {'__slots__': ()})
 
 class RansacSampler(ABC):
     """ Base class for ransac samplers.

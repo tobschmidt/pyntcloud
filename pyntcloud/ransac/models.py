@@ -1,8 +1,9 @@
 
 import numpy as np
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from ..geometry import Plane, Sphere
 
+ABC = ABCMeta('ABC', (object,), {'__slots__': ()})
 
 class RansacModel(ABC):
     """

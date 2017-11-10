@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from collections import OrderedDict
 
+ABC = ABCMeta('ABC', (object,), {'__slots__': ()})
 
 class ScalarField(ABC):
     """Base class for scalar fields."""
