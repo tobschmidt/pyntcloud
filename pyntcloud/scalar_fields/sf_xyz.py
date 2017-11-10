@@ -22,7 +22,7 @@ class PlaneFit(ScalarField_XYZ):
         self.max_iterations = max_iterations
         self.n_inliers_to_stop = n_inliers_to_stop
 
-        super().__init__(pyntcloud)
+        super(PlaneFit, self).__init__(pyntcloud)
 
     def compute(self):
         inliers = single_fit(self.points, self.model, self.sampler,
@@ -45,7 +45,7 @@ class SphereFit(ScalarField_XYZ):
         self.max_iterations = max_iterations
         self.n_inliers_to_stop = n_inliers_to_stop
 
-        super().__init__(pyntcloud)
+        super(SphereFit, self).__init__(pyntcloud)
 
     def compute(self):
         inliers = single_fit(self.points, self.model, self.sampler,
@@ -68,7 +68,7 @@ class CustomFit(ScalarField_XYZ):
         self.model_kwargs = model_kwargs
         self.sampler_kwargs = sampler_kwargs
         self.max_iterations = max_iterations
-        super().__init__(pyntcloud)
+        super(CustomFit, self).__init__(pyntcloud)
 
     def compute(self):
         inliers = single_fit(self.points, self.model, self.sampler,
@@ -85,7 +85,7 @@ class SphericalCoordinates(ScalarField_XYZ):
 
     def __init__(self, pyntcloud, degrees=True):
         self.degrees = degrees
-        super().__init__(pyntcloud)
+        super(SphericalCoordinates, self).__init__(pyntcloud)
 
     def compute(self):
         radial, theta, phi = cartesian_to_spherical(

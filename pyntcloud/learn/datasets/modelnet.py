@@ -28,7 +28,7 @@ class ModelNet10(ClassificationFolder):
         else:
             root = f"{root}/test"
 
-        super().__init__(root, transform, target_transform, load_3D_kwargs)
+        super(ModelNet10, self).__init__(root, transform, target_transform, load_3D_kwargs)
 
 
 class ModelNet40(ClassificationFolder):
@@ -48,7 +48,7 @@ class ModelNet40(ClassificationFolder):
         else:
             root = f"{root}/test"
 
-        super().__init__(root, transform, target_transform, load_3D_kwargs)
+        super(ModelNet40, self).__init__(root, transform, target_transform, load_3D_kwargs)
 
 
 def get_and_setup_modelnet(N):

@@ -23,7 +23,7 @@ class BoundingBox(Filter_XYZ):
 
     def __init__(self, pyntcloud, min_x=-np.inf, max_x=np.inf, min_y=-np.inf,
                  max_y=np.inf, min_z=-np.inf, max_z=np.inf):
-        super().__init__(pyntcloud)
+        super(BoundingBox, self).__init__(pyntcloud)
         self.min_x, self.max_x = min_x, max_x
         self.min_y, self.max_y = min_y, max_y
         self.min_z, self.max_z = min_z, max_z

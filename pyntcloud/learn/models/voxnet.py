@@ -33,7 +33,7 @@ class VoxNet(torch.nn.Module):
         If you want to finetune with custom classes, set load_head_weights to False.
         Default head weights are pretrained with ModelNet10.
         """
-        super().__init__()
+        super(VoxNet, self).__init__()
         self.body = torch.nn.Sequential(OrderedDict([
             ('conv1', torch.nn.Conv3d(in_channels=1,
                                       out_channels=32, kernel_size=5, stride=2)),

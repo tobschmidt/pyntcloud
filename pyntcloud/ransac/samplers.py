@@ -37,7 +37,7 @@ class RandomSampler(RansacSampler):
     """
 
     def __init__(self, points, k):
-        super().__init__(points, k)
+        super(RandomSampler, self).__init__(points, k)
 
     def get_sample(self):
         """ Get k unique random points.
@@ -58,7 +58,7 @@ class VoxelgridSampler(RansacSampler):
     """
 
     def __init__(self, points, k, voxel_size=0.1):
-        super().__init__(points, k)
+        super(VoxelgridSampler, self).__init__(points, k)
         sizes = [voxel_size] * 3
         self.voxelgrid = VoxelGrid(self.points, sizes=sizes, bb_cuboid=False)
 

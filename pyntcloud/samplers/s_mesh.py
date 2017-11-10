@@ -10,7 +10,7 @@ class Sampler_Mesh(Sampler):
     """
 
     def __init__(self, pyntcloud, rgb=False, normals=False):
-        super().__init__(pyntcloud)
+        super(Sampler_Mesh, self).__init__(pyntcloud)
         self.rgb = rgb
         self.normals = normals
 
@@ -57,7 +57,7 @@ class RandomMesh(Sampler_Mesh):
     """
 
     def __init__(self, pyntcloud, n, rgb=False, normals=False):
-        super().__init__(pyntcloud, rgb, normals)
+        super(RandomMesh, self).__init__(pyntcloud, rgb, normals)
         self.n = n
 
     def compute(self):

@@ -6,7 +6,7 @@ from .base import Filter
 class Filter_KDTree(Filter):
 
     def __init__(self, pyntcloud, kdtree):
-        super().__init__(pyntcloud)
+        super(Filter_KDTree, self).__init__(pyntcloud)
         self.kdtree = kdtree
 
     def extract_info(self):
@@ -40,7 +40,7 @@ class RadiousOutlierRemoval(Filter_KDTree):
     """
 
     def __init__(self, pyntcloud, kdtree, k, r):
-        super().__init__(pyntcloud, kdtree)
+        super(RadiousOutlierRemoval, self).__init__(pyntcloud, kdtree)
         self.k = k
         self.r = r
 
@@ -79,7 +79,7 @@ class StatisticalOutlierRemoval(Filter_KDTree):
     """
 
     def __init__(self, pyntcloud, kdtree, k, z_max):
-        super().__init__(pyntcloud, kdtree)
+        super(StatisticalOutlierRemoval, self).__init__(pyntcloud, kdtree)
         self.k = k
         self.z_max = z_max
 

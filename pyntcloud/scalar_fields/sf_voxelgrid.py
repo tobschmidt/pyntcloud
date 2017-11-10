@@ -5,7 +5,7 @@ from .base import ScalarField
 class ScalarField_Voxelgrid(ScalarField):
 
     def __init__(self, pyntcloud, voxelgrid):
-        super().__init__(pyntcloud)
+        super(ScalarField_Voxelgrid, self).__init__(pyntcloud)
         self.voxelgrid = voxelgrid
 
     def extract_info(self):

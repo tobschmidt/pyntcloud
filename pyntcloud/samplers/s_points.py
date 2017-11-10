@@ -7,7 +7,7 @@ class Sampler_Points(Sampler):
     """
 
     def __init__(self, pyntcloud):
-        super().__init__(pyntcloud)
+        super(Sampler_Points, self).__init__(pyntcloud)
 
     def extract_info(self):
         self.points = self.pyntcloud.points
@@ -23,7 +23,7 @@ class RandomPoints(Sampler_Points):
     """
 
     def __init__(self, pyntcloud, n):
-        super().__init__(pyntcloud)
+        super(RandomPoints, self).__init__(pyntcloud)
         self.n = n
 
     def compute(self):

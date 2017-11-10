@@ -43,7 +43,7 @@ class VoxelGrid(Structure):
             in order to have all the dimensions of equal lenght.
 
         """
-        super().__init__(PyntCloud)
+        super(VoxelGrid, self).__init__(PyntCloud)
 
         self.x_y_z = x_y_z
         self.sizes = sizes

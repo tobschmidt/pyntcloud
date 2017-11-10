@@ -35,7 +35,7 @@ class RansacModel(ABC):
 class RansacPlane(RansacModel, Plane):
 
     def __init__(self, max_dist=1e-4):
-        super().__init__(max_dist=max_dist)
+        super(RansacPlane, self).__init__(max_dist=max_dist)
         self.k = 3
 
     def are_valid(self, k_points):
@@ -46,7 +46,7 @@ class RansacPlane(RansacModel, Plane):
 class RansacSphere(RansacModel, Sphere):
 
     def __init__(self, max_dist=1e-4):
-        super().__init__(max_dist=max_dist)
+        super(RansacSphere, self).__init__(max_dist=max_dist)
         self.k = 4
 
     def are_valid(self, k_points):

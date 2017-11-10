@@ -9,7 +9,7 @@ class Sampler_Voxelgrid(Sampler):
     """
 
     def __init__(self, pyntcloud, voxelgrid):
-        super().__init__(pyntcloud)
+        super(Sampler_Voxelgrid, self).__init__(pyntcloud)
         self.voxelgrid = voxelgrid
 
     def extract_info(self):

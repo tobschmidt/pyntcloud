@@ -14,7 +14,7 @@ class ScalarField_EigenValues(ScalarField):
     """
 
     def __init__(self, pyntcloud, ev):
-        super().__init__(pyntcloud)
+        super(ScalarField_EigenValues, self).__init__(pyntcloud)
         self.k = ev[0].split("e1")[1]
         self.ev = ev
 

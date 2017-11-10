@@ -29,7 +29,7 @@ class StructuresDict(dict):
         self.n_kdtrees = 0
         self.n_delanuays = 0
         self.n_convex_hulls = 0
-        super().__init__(*args)
+        super(StructuresDict, self).__init__(*args)
 
     def __setitem__(self, key, val):
         if not issubclass(val.__class__, Structure):
@@ -46,4 +46,4 @@ class StructuresDict(dict):
             self.n_convex_hulls += 1
         else:
             raise ValueError("{} is not a valid structure.id".format(key))
-        super().__setitem__(key, val)
+        super(StructuresDict, self).__setitem__(key, val)

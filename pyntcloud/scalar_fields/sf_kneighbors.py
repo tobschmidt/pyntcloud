@@ -16,7 +16,7 @@ class ScalarField_KNeighbors(ScalarField):
     """
 
     def __init__(self, pyntcloud, k_neighbors):
-        super().__init__(pyntcloud)
+        super(ScalarField_KNeighbors, self).__init__(pyntcloud)
         self.k_neighbors_idx = k_neighbors
 
     def extract_info(self):
