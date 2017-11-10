@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import os
 import urllib
 import zipfile
@@ -24,9 +26,9 @@ class ModelNet10(ClassificationFolder):
             root = get_and_setup_modelnet(10)
 
         if train:
-            root = f"{root}/train"
+            root = "%s/train"%root
         else:
-            root = f"{root}/test"
+            root = "%s/test"%root
 
         super(ModelNet10, self).__init__(root, transform, target_transform, load_3D_kwargs)
 
@@ -44,9 +46,9 @@ class ModelNet40(ClassificationFolder):
             root = get_and_setup_modelnet(40)
 
         if train:
-            root = f"{root}/train"
+            root = "%s/train"%root
         else:
-            root = f"{root}/test"
+            root = "%s/test"%root
 
         super(ModelNet40, self).__init__(root, transform, target_transform, load_3D_kwargs)
 
@@ -64,11 +66,11 @@ def get_and_setup_modelnet(N):
     extract_folder: str
     """
     cwd = os.getcwd()
-    zip_file = f"{cwd}/modelnet{N}.zip"
-    extract_folder = f"{cwd}/modelnet{N}"
+    zip_file = "%s/modelnet%i.zip"%(cwd, N)
+    extract_folder = "%s/modelnet{N}"%(cwd, N)
 
     if not os.path.exists(zip_file):
-        print(f"Downloading ModelNet{N}")
+        print("Downloading ModelNet%i"%N)
         urllib.request.urlretrieve(MODELNET_URLS[N], zip_file)
 
     if not os.path.exists(extract_folder):
@@ -80,29 +82,29 @@ def get_and_setup_modelnet(N):
     print("Removing __MACOSX")
     # Thanks, Steve Jobs
     try:
-        rmtree(f"{extract_folder}/__MACOSX")
-    except FileNotFoundError:
+        rmtree("%s/__MACOSX"%extract_folder)
+    except IOError:
         pass
 
     print("Rearranging ModelNet")
     # create proper train/test split
-    BASE = f"{extract_folder}/ModelNet{N}/"
+    BASE = "%s/ModelNet%i/"%(extract_folder, N)
     for class_dir in os.listdir(BASE):
         if os.path.isdir(os.path.join(BASE, class_dir)):
-            os.makedirs(f"{extract_folder}/train/{class_dir}")
-            os.makedirs(f"{extract_folder}/test/{class_dir}")
+            os.makedirs("%s/train/%s"%(extract_folder, class_dir))
+            os.makedirs("%s/test/%s}"%(extract_folder, class_dir))
 
     # move to proper train/test split
-    all_files = glob(f"{BASE}/*/*/*.off")
+    all_files = glob("%s/*/*/*.off"%(BASE))
     for src in all_files:
         class_dir = src.split("/")[-3]
         split = src.split("/")[-2]
         fname = src.split("/")[-1]
-        dst = f"{extract_folder}/{split}/{class_dir}/{fname}"
+        dst = "%s/%s/%s/%s"%(extract_folder,split,class_dir,fname)
         os.rename(src, dst)
 
     print("Fixing wrong off files")
-    all_files = glob(f"{extract_folder}/*/*/*.off")
+    all_files = glob("%s/*/*/*.off"%extract_folder)
     for path in all_files:
         f = open(path, 'r')
         lines = f.readlines()
@@ -122,6 +124,6 @@ def get_and_setup_modelnet(N):
                 f.write(line)
             f.close()
 
-    rmtree(f"{BASE}")
+    rmtree("%s"%BASE)
 
     return extract_folder
